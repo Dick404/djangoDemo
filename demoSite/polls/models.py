@@ -7,7 +7,7 @@ import datetime
 
 # Create your models here.
 
-
+'''
 def __str__(fn):
     def wrapper(*args):
         if type(args[0]) is None:
@@ -15,16 +15,19 @@ def __str__(fn):
         else:
             return fn(args[0])
     return wrapper
+'''
 
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 
-    @__str__
+#    @__str__
+#    def __str__(self):
+#        if not type(self) is None:
+#            print [{"question is": self.question_text, "publish date is": self.pub_date}]
     def __str__(self):
-        if not type(self) is None:
-            print [{"question is": self.question_text, "publish date is": self.pub_date}]
+        return self.question_text
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
@@ -35,6 +38,9 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 
-    @__str__
+ #   @__str__
+ #   def __str__(self):
+ #       print [{"choice text is": self.choice_text, "the vote is": self.votes}]
+
     def __str__(self):
-        print [{"choice text is": self.choice_text, "the vote is": self.votes}]
+        return self.choice_text

@@ -2,6 +2,11 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'polls'
 urlpatterns = [
-    url("", views.index, name="index")
+    url(r'^$', views.index, name="index"),
+    url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+    url(r'(?P<question_id>\d+)/vote', views.vote, name='vote'),
+    url(r'(?P<question_id>\d+)/result', views.results, name='result'),
+
 ]

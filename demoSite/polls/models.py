@@ -7,7 +7,7 @@ import datetime
 
 # Create your models here.
 
-'''
+
 def __str__(fn):
     def wrapper(*args):
         if type(args[0]) is None:
@@ -15,7 +15,6 @@ def __str__(fn):
         else:
             return fn(args[0])
     return wrapper
-'''
 
 
 class Question(models.Model):
@@ -30,7 +29,8 @@ class Question(models.Model):
         return self.question_text
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 class Choice(models.Model):
@@ -44,3 +44,17 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+'''
+class serialbindhost(models.Model):
+
+    class Meta:
+        db_table = 'serialbindhost'
+
+    serialnum = models.CharField(max_length=100, primary_key='serialNum')
+    host = models.CharField(max_length=100)
+
+    def get_serial_num_bind_host(self):
+        return [self.serialNum, self.host]
+'''

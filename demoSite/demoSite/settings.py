@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ejzt8@27qopzp133$i1g5-w8e70amhfg=+^olm$rnrd$9&935x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.0.102', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '192.168.0.104', '127.0.0.1']
 
 
 # Application definition
@@ -76,13 +76,15 @@ WSGI_APPLICATION = 'demoSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': 'W829988a?',
-        'HOST': '192.168.0.102',
-        'PORT': '3306',
-
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'serial_host',
+        'USER': 'gophic',
+        'PASSWORD': 'passw0rd',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
+    "sqlite": {
+        ''
     }
 }
 

@@ -1,2 +1,2 @@
 # djangoDemo
-djangoDmeo
+Practise of django demosite.
